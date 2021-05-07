@@ -1,0 +1,15 @@
+# HELP card_price_eur The price of cards in EUR
+# TYPE card_price_eur gauge
+
+<% @cards.each do |card| %>
+card_price_eur{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>"} <%= card.price_eur %>
+card_price_eur{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",foil="true"} <%= card.price_eur_foil %>
+<% end %>
+
+# HELP card_price_usd The price of cards in USD
+# TYPE card_price_usd gauge
+
+<% @cards.each do |card| %>
+card_price_usd{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>"} <%= card.price_usd %>
+card_price_usd{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",foil="true"} <%= card.price_usd_foil %>
+<% end %>
