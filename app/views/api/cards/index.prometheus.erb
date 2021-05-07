@@ -3,10 +3,10 @@
 
 <% @cards.each do |card| %>
 <% if card.price_eur %>
-card_price_eur{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_eur %>
+card_price_eur{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_eur %>
 <% end %>
 <% if card.price_eur_foil %>
-card_price_eur{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_eur_foil %>
+card_price_eur{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_eur_foil %>
 <% end %>
 <% end %>
 
@@ -15,9 +15,9 @@ card_price_eur{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%
 
 <% @cards.each do |card| %>
 <% if card.price_usd %>
-card_price_usd{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_usd %>
+card_price_usd{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_usd %>
 <% end %>
 <% if card.price_usd_foil %>
-card_price_usd{oracle_id="<%= card.oracle_id %>",name="<%= card.name %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_usd_foil %>
+card_price_usd{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_usd_foil %>
 <% end %>
 <% end %>
