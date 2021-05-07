@@ -15,10 +15,8 @@ class Scryfall
                 .find { |o| o.type == type.to_s }
                 .uri
                 .split("/")[-1]
-
-    uri = "http://localhost:3000/example/#{bulk.get(dump_id).download_uri.split("/")[-1]}"
       
-    Downloader.download(uri)
+    Downloader.download(bulk.get(dump_id).download_uri)
   end
 
 end

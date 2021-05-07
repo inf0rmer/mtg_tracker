@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_112229) do
+ActiveRecord::Schema.define(version: 2021_05_07_131609) do
 
-  create_table "cards", force: :cascade do |t|
+  create_table "cards", id: false, force: :cascade do |t|
+    t.string "id", null: false
     t.string "oracle_id", null: false
     t.string "name", null: false
     t.string "set", null: false
@@ -23,8 +24,9 @@ ActiveRecord::Schema.define(version: 2021_05_07_112229) do
     t.float "price_tix"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name", "set"], name: "index_cards_on_name_and_set", unique: true
-    t.index ["oracle_id"], name: "index_cards_on_oracle_id", unique: true
+    t.string "collector_number"
+    t.index ["id"], name: "index_cards_on_id", unique: true
+    t.index ["set", "collector_number"], name: "index_cards_on_set_and_collector_number", unique: true
   end
 
 end

@@ -1,6 +1,7 @@
 class CreateCards < ActiveRecord::Migration[6.1]
   def change
-    create_table :cards do |t|
+    create_table :cards, id: false do |t|
+      t.string :id, null: false
       t.string :oracle_id, null: false
       t.string :name, null: false
       t.string :set, null: false
@@ -16,7 +17,6 @@ class CreateCards < ActiveRecord::Migration[6.1]
     change_column_default :cards, :created_at, from: nil, to: -> { 'current_timestamp' }
     change_column_default :cards, :updated_at, from: nil, to: -> { 'current_timestamp' }
 
-    add_index :cards, :oracle_id, unique: true
-    add_index :cards, [:name, :set], unique: true
+    add_index :cards, [:id], unique: true
   end
 end
