@@ -1,0 +1,17 @@
+{
+	"ulid": "01F5371NV95XAB8V40R1MDC43N",
+	"minTime": 1620373662287,
+	"maxTime": 1620374400000,
+	"stats": {
+		"numSamples": 24982,
+		"numSeries": 507,
+		"numChunks": 507
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01F5371NV95XAB8V40R1MDC43N"
+		]
+	},
+	"version": 1
+}
