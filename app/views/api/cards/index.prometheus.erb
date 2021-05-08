@@ -1,23 +1,15 @@
-# HELP card_price_eur The price of cards in EUR
-# TYPE card_price_eur gauge
+<% metric_name      = "card_price_#{@currency}" %>
+<% method_name      = "price_#{@currency}".to_sym %>
+<% method_name_foil = "#{method_name}_foil".to_sym %>
+
+# HELP <%= metric_name %> The price of cards in <%= @currency.upcase %>
+# TYPE <%= metric_name %> gauge
 
 <% @cards.each do |card| %>
-<% if card.price_eur %>
-card_price_eur{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_eur %>
+<% if card.send(method_name) %>
+<%= metric_name %>{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.send(method_name) %>
 <% end %>
-<% if card.price_eur_foil %>
-card_price_eur{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_eur_foil %>
-<% end %>
-<% end %>
-
-# HELP card_price_usd The price of cards in USD
-# TYPE card_price_usd gauge
-
-<% @cards.each do |card| %>
-<% if card.price_usd %>
-card_price_usd{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>"} <%= card.price_usd %>
-<% end %>
-<% if card.price_usd_foil %>
-card_price_usd{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.price_usd_foil %>
+<% if card.send(method_name) %>
+<%= metric_name %>{oracle_id="<%= card.oracle_id %>",set="<%= card.set %>",collector_number="<%= card.collector_number %>",foil="true"} <%= card.send(method_name) %>
 <% end %>
 <% end %>
